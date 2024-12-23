@@ -1,12 +1,16 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fustat:wght@200..800&family=Marhey:wght@300..700&family=Oldenburg&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rakkas&family=Sirin+Stencil&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 /* Start Variables */
 :root {
-
   --transparent-color: rgba(4, 57, 71, 0.808);
   --section-padding: 100px;
 }
+body {
+  font-family: "Bebas Neue", serif;
+
+  background-color: #000000;
+  color: #024caa;
+}
+
 /* End Variables */
 /* Start Global Rules */
 * {
@@ -50,12 +54,12 @@ ul {
 /* Start Components */
 .main-headingm {
   text-align: center;
-    padding-bottom: 150px;
+  padding-bottom: 150px;
 }
 
 .main-heading {
   text-align: center;
-
+    font-family: "Bebas Neue", serif;
 }
 .main-headingm h2 {
   font-weight: normal;
@@ -64,7 +68,6 @@ ul {
 
   margin-bottom: 70px;
   text-transform: uppercase;
-font-family: "Playfair Display", serif;
 }
 .main-headingm h2::before {
   content: "";
@@ -97,19 +100,17 @@ font-family: "Playfair Display", serif;
   color: #777;
 }
 
-
 .main-heading {
   text-align: center;
-
 }
 .main-heading h2 {
   font-weight: normal;
   font-size: 40px;
+    font-family: "Bebas Neue", serif;
   position: relative;
-color: #024CAA;
+  color: #024caa;
   margin-bottom: 70px;
   text-transform: uppercase;
-font-family: "Playfair Display", serif;
 }
 .main-heading h2::before {
   content: "";
@@ -127,6 +128,7 @@ font-family: "Playfair Display", serif;
   left: 50%;
   transform: translateX(-50%);
   width: 14px;
+    font-family: "Bebas Neue", serif;
   height: 14px;
   border-radius: 50%;
   border: 2px solid #333;
@@ -138,6 +140,7 @@ font-family: "Playfair Display", serif;
   margin: 0 auto 100px;
   max-width: 100%;
   line-height: 2;
+    font-family: "Bebas Neue", serif;
   padding-top: 10px;
   color: #777;
 }
@@ -145,98 +148,154 @@ font-family: "Playfair Display", serif;
 
 
 
-
 /* Start Header */
-header {
-  position: absolute;
-  
-  left: 0;
-  width: 100%;
-font-family: "Playfair Display", serif;
+.header {
+  position: relative;
+  -webkit-box-shadow: 0 0 10px #ddd;
+  -moz-box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 10px #ddd;
   z-index: 2;
 }
-header .container {
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   position: relative;
-  
-  min-height: 97px;
 }
-header .container::after {
-  content: "";
-  position: absolute;
-  height: 1px;
-  background-color: #a2a2a2;
-  bottom: 0;
-  width: calc(100% - 30px);
-  left: 15px;
-}
-header .logo img {
-  height: 40px;
-}
-header nav {
-  flex: 1;
-  display: flex;
-  align-items: center;
-padding-left: 140px;
-}
+.header .logo {
+  width: 50px;
+  height: 50px;
 
-@media (min-width: 768px) {
-  header nav .toggle-menu {
-    display: none;
-  }
-}
-header nav ul {
   display: flex;
 }
 @media (max-width: 767px) {
-  header nav ul {
+  .header .logo {
+    width: 100%;
+    height: 50px;
+  }
+}
+.header .main-nav {
+  display: flex;
+}
+@media (max-width: 767px) {
+  .header .main-nav {
+    margin: auto;
+  }
+}
+.header .main-nav > li:hover .mega-menu {
+  opacity: 1;
+  z-index: 100;
+  top: calc(100% + 1px);
+}
+.header .main-nav > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72px;
+  position: relative;
+  color: black;
+    font-family: "Bebas Neue", serif;
+  padding: 0 30px;
+  text-decoration: none;
+  overflow: hidden;
+  font-size: 22px;
+  transition: var(--main-transition);
+}
+@media (max-width: 707px) {
+  .header .main-nav > li > a {
+    padding: 10px;
+    font-size: 14px;
+    height: 40px;
+  }
+}
+.header .main-nav > li > a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--main-color);
+  top: 0;
+  left: -100%;
+  transition: var(--main-transition);
+}
+.header .main-nav > li > a:hover {
+  color: #024caa;
+}
+.header .main-nav > li > a:hover::before {
+  left: 0;
+}
+.header .mega-menu {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 30px;
+  background-color: black;
+  border-radius: 80px;
+  border-bottom: 3px solid var(--main-color);
+  z-index: -1;
+  display: flex;
+  gap: 40px;
+  top: calc(100% + 50px);
+  opacity: 0;
+  transition: top var(--main-transition), opacity var(--main-transition);
+}
+@media (max-width: 767px) {
+  .header .mega-menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 5px;
+  }
+}
+.header .mega-menu .image img {
+  max-width: 100%;
+  width: 200px;
+  height: 200px;
+}
+@media (max-width: 991px) {
+  .header .mega-menu .image {
     display: none;
   }
-  header nav .toggle-menu:hover + ul {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: rgb(0 0 0 / 50%);
-  }
-  header nav ul li a {
-    padding: 15px !important;
-  }
 }
-header nav ul li a {
-  padding: 40px 10px;
-  display: block;
-  color: white;
-  text-decoration: none;
-  font-size: 24px;
-  transition: 0.3s;
+.header .mega-menu .links {
+  min-width: 250px;
+  flex: 1;
+}
+.header .mega-menu .links li {
   position: relative;
-  padding-left: 30px;
-  z-index: 2;
 }
-header nav ul li a.active,
-header nav ul li a:hover {
-  color:#024CAA;
-  border-bottom: 1px solid #024CAA;
+.header .mega-menu .links li:not(:last-child) {
+  border-bottom: 1px solid #e9e6e6;
 }
-header nav .form {
-  width: 40px;
-  height: 30px;
-  position: relative;
-  margin-left: 30px;
-  border-left: 1px solid white;
+@media (max-width: 767px) {
+  .header .mega-menu .links:first-of-type li:last-child {
+    border-bottom: 1px solid #e9e6e6;
+  }
 }
-header nav .form i {
-  color: white;
+.header .mega-menu .links li::before {
+  content: "";
   position: absolute;
-  font-size: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+
+  z-index: -1;
+  transition: var(--main-transition);
+}
+.header .mega-menu .links li:hover::before {
+  width: 100%;
+}
+.header .mega-menu .links li a {
+  text-decoration: none;
+  padding: 15px;
+    font-family: "Bebas Neue", serif;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+.header .mega-menu .links li a i {
+  margin-right: 10px;
 }
 /* End Header */
 /* Start Landing */
@@ -282,8 +341,6 @@ video {
 }
 .landing .text .content {
   max-width: 500px;
-  
-font-family: "Playfair Display", serif;
 }
 @media (max-width: 767px) {
   .landing .text {
@@ -295,8 +352,7 @@ font-family: "Playfair Display", serif;
 }
 
 .landing .text .content .kkl {
-padding-bottom: 30px;
-
+  padding-bottom: 30px;
 }
 .landing .text .content h2 {
   font-size: 52px;
@@ -304,8 +360,6 @@ padding-bottom: 30px;
   line-height: 1.5;
   margin-bottom: 20px;
   color: #f7eeee;
-font-family: "Playfair Display", serif;
-
 }
 .landing .text .content .hmn {
   font-size: 82px;
@@ -313,8 +367,8 @@ font-family: "Playfair Display", serif;
   line-height: 1.5;
   margin-bottom: 20px;
   color: #ffffff;
-font-family: "Playfair Display", serif;
-border-bottom: 1px #024CAA solid;
+
+  border-bottom: 1px #024caa solid;
 }
 
 .landing .text .content .kio {
@@ -350,13 +404,12 @@ border-bottom: 1px #024CAA solid;
 
 /* Start secioen-1 */
 .secioen-1 {
-
-      height: 800px;
-   background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    padding-top: 10rem;
+  height: 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 10rem;
 }
 @media (min-width: 768px) {
   .secioen-1 .services-container {
@@ -387,20 +440,17 @@ border-bottom: 1px #024CAA solid;
 
 /* End secioen-1 */
 
-
 /* Start secioen-2 */
 .secioen-2 {
   padding-bottom: calc(var(--section-padding) + 60px);
   line-height: 45px;
   padding-top: 20px;
-  
 }
 .secioen-2 .secioen-2-content {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-font-family: "Playfair Display", serif;
 }
 @media (max-width: 991px) {
   .secioen-2 .secioen-2-content {
@@ -409,10 +459,10 @@ font-family: "Playfair Display", serif;
   }
 }
 .secioen-2 .secioen-2-content .image {
- position: relative;
-      width: 330px;
-    height: 590px;
-    padding-bottom: 20px;
+  position: relative;
+  width: 330px;
+  height: 590px;
+  padding-bottom: 20px;
 }
 @media (max-width: 991px) {
   .secioen-2 .secioen-2-content .image {
@@ -430,30 +480,33 @@ font-family: "Playfair Display", serif;
   max-width: 100%;
 }
 .secioen-2 .secioen-2-content .text {
-flex-basis: calc(94% - 500px);
+  flex-basis: calc(94% - 500px);
   padding-top: 0px;
   color: white;
 }
 .secioen-2 .secioen-2-content .text p:first-of-type {
-font-weight: bold;
-    line-height: 1;
-    font-size: 26px;
-    margin-bottom: 44px;
-    color: #024caa;
+  font-weight: bold;
+  line-height: 1;
+  font-size: 50px;
+  margin-bottom: 44px;
+  color: #024caa;
+}
+.plo{
+  font-size: 25px;
 }
 .secioen-2 .secioen-2-content .text .pop {
-margin-top:10px ;
+  margin-top: 10px;
 }
 .secicen-2 .secicen-2-content .image::after {
-    top: -40px;
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 300px;
-    border-left: 80px solid #024CAA;
-    border-bottom: 80px solid #024CAA;
-    z-index: -1;
-    right: -150px;
+  top: -40px;
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 300px;
+  border-left: 80px solid #024caa;
+  border-bottom: 80px solid #024caa;
+  z-index: -1;
+  right: -150px;
 }
 
 .secioen-2 .secioen-2-content .image::before {
@@ -469,21 +522,18 @@ margin-top:10px ;
 
 /* End secioen-2 */
 
-
 .main-headingh {
   text-align: center;
   font-size: 25px;
   color: #fff;
-line-height: 1.9;
-padding-bottom: 20px;
+  line-height: 1.9;
+  padding-bottom: 20px;
 }
-
 
 /* Start secicen-3 */
 .secicen-3 {
-
   position: relative;
-  
+
   padding-bottom: 100px;
 }
 .secicen-3 .container {
@@ -500,14 +550,11 @@ padding-bottom: 20px;
   border-radius: 30px;
 }
 
-
-
-
 .secicen-3 .box .title {
   font-weight: bold;
   margin: 30px 0;
   font-size: 25px;
-font-family: "Playfair Display", serif;
+
   letter-spacing: -1px;
   color: #000;
 }
@@ -521,18 +568,9 @@ font-family: "Playfair Display", serif;
 
 .secicen-3 .box .time {
   color: #000;
-font-family: "Playfair Display", serif;
 }
 
-
 /* End secicen-3 */
-
-
-
-
-
-
-
 
 /* Start secicen-4 */
 .secicen-4 {
@@ -577,8 +615,8 @@ font-family: "Playfair Display", serif;
   position: absolute;
   width: 120px;
   height: 300px;
-  border-left: 80px solid #024CAA;
-  border-bottom: 80px solid #024CAA;
+  border-left: 80px solid #024caa;
+  border-bottom: 80px solid #024caa;
   z-index: -1;
   right: -150px;
 }
@@ -607,19 +645,16 @@ font-family: "Playfair Display", serif;
 }
 .secicen-4 .secicen-4-content .text p:last-of-type {
   line-height: 2;
- font-size: 18px;
+  font-size: 20px;
   color: #ffffff;
 }
 /* End secicen-4 */
-
-
-
 
 /* Start Footer */
 .footer {
   background-color: #000000;
   padding: 40px 0 0;
-   border-top: 0.5px solid #444;
+  border-top: 0.5px solid #444;
 }
 @media (max-width: 700px) {
   .footer {
@@ -629,10 +664,9 @@ font-family: "Playfair Display", serif;
 .footer .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-
 }
 .footer .box h3 {
-  color: #024CAA;
+  color: #024caa;
   font-size: 50px;
   margin: 0 0 20px;
 }
@@ -670,16 +704,15 @@ font-family: "Playfair Display", serif;
 }
 .footer .box .links li {
   padding: 15px 0;
- 
+
   transition: var(--main-transition);
 }
 
 .footer .box .links li:hover {
   padding-left: 10px;
-
 }
 .footer .box .links li:hover a {
-  color: #024CAA;
+  color: #024caa;
 }
 .footer .box .links li a {
   color: #b9b9b9;
@@ -700,7 +733,7 @@ font-family: "Playfair Display", serif;
 }
 .footer .box .line i {
   font-size: 25px;
-  color:#024CAA;
+  color: #024caa;
   margin-right: 10px;
 }
 @media (max-width: 767px) {
@@ -730,7 +763,6 @@ font-family: "Playfair Display", serif;
 }
 /* End Footer */
 
-
 /* From Uiverse.io by doniaskima */
 .bottonmmm {
   padding-left: 80px;
@@ -751,9 +783,9 @@ font-family: "Playfair Display", serif;
   -webkit-appearance: button;
   background-color: #000;
   background-image: none;
-  color: #024CAA;
+  color: #024caa;
   cursor: pointer;
-font-family: "Playfair Display", serif;
+
   font-size: 100%;
   line-height: 1.5;
   margin: 0;
@@ -806,7 +838,6 @@ font-family: "Playfair Display", serif;
 
 .btn-53 .letters {
   display: inline-flex;
-font-family: "Playfair Display", serif;
 }
 
 .btn-53 span {
@@ -862,8 +893,8 @@ font-family: "Playfair Display", serif;
   text-decoration: none;
   font-size: 25px;
   color: BLACK;
-  background: #024CAA;
-font-family: "Playfair Display", serif;
+  background: #024caa;
+
   transition: 1s;
   box-shadow: 6px 6px 0 black;
   transform: skewX(-15deg);
@@ -927,7 +958,7 @@ font-family: "Playfair Display", serif;
 
 @keyframes color_anim {
   0% {
-    fill: #024CAA;
+    fill: #024caa;
   }
 
   50% {
@@ -935,16 +966,6 @@ font-family: "Playfair Display", serif;
   }
 
   100% {
-    fill: #024CAA;
+    fill: #024caa;
   }
-}
-
-
-
-body {
- font-family: "Bebas Neue", serif;
-
-
-  background-color: #000000;
-  color: #024CAA;
 }
